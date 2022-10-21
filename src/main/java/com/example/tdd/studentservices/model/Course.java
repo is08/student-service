@@ -1,8 +1,8 @@
 package com.example.tdd.studentservices.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.example.tdd.studentservices.repository.StudentRepository;
+
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -15,7 +15,7 @@ public class Course {
     @Column(name = "description")
     private String description;
     @Column(name = "steps")
-    private List<String> steps;
+    private String steps;
 
     public String getId() {
         return id;
@@ -41,18 +41,18 @@ public class Course {
         this.description = description;
     }
 
-    public List<String> getSteps() {
+    public String getSteps() {
         return steps;
     }
 
-    public void setSteps(List<String> steps) {
+    public void setSteps(String steps) {
         this.steps = steps;
     }
 
     public Course(){
     }
 
-    public Course(String id, String name, String description, List<String> steps) {
+    public Course(String id, String name, String description, String steps) {
         this.id = id;
         this.name = name;
         this.description = description;
