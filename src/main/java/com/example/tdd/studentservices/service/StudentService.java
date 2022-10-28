@@ -21,6 +21,7 @@ public class StudentService {
     private CourseRepository courseRepository;
 
     public List<Student> getAll(){
+        System.out.println("reached service");
         return studentRepository.findAll();
     }
 
@@ -47,5 +48,16 @@ public class StudentService {
             return tempCourse;
         }
         return null;
+    }
+
+    public void addCourse(Integer studentId, String courseId) {
+        Course course = courseRepository.findById(courseId).get();
+        Student student = studentRepository.findById(studentId).get();
+
+        List<Course> enrolledCourse = student.getEnrolledCourses();
+        enrolledCourse.add(course);
+        student.setEnrolledCourses(enrolledCourse);
+
+        studentRepository.save(student);
     }
 }

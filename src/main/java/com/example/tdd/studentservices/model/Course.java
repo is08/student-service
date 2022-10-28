@@ -1,9 +1,8 @@
 package com.example.tdd.studentservices.model;
 
-import com.example.tdd.studentservices.repository.StudentRepository;
+import com.sun.istack.NotNull;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Course {
@@ -11,10 +10,13 @@ public class Course {
     @Id
     private String id;
     @Column(name = "name")
+    @NotNull
     private String name;
     @Column(name = "description")
+    @NotNull
     private String description;
     @Column(name = "steps")
+    @NotNull
     private String steps;
 
     public String getId() {
